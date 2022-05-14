@@ -1,0 +1,102 @@
+?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>Lightweight testing framework for mocking calls to external http calls</description>
+    <groupId>io.github.roloreaper.web-mock</groupId>
+    <artifactId>open-mft</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>Open Managed File Transfer System</name>
+    <url>https://github.com/roloreaper/OMFT</url>
+
+    <licenses>
+       <license>
+        <name>GNU GPL v3</name>
+        <url>http://www.gnu.org/licenses/gpl.html</url>
+        <distribution>repo</distribution>
+       </license>
+    </licenses>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+    <profiles>
+        <profile>
+            <id>travis</id>
+            <activation>
+                <property>
+                    <name>env.TRAVIS</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+            </build>
+        </profile>
+        <profile>
+            <id>Release</id>
+            <activation>
+		<property>
+		    <name>performRelease</name>
+		    <value>true</value>
+		</property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-scm-publish-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <configuration>
+                            <pubScmUrl>${project.scm.developerConnection}</pubScmUrl>
+                            <scmBranch>gh-pages</scmBranch>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <parent>
+            <groupId>org.sonatype.oss</groupId>
+            <artifactId>oss-parent</artifactId>
+            <version>7</version>
+    </parent>
+    <scm>
+        <url>https://github.com/roloreaper/OMFT</url>
+        <connection>scm:git:git@github.com:roloreaper/OMFT</connection>
+        <developerConnection>scm:git:git@github.com:roloreaper/OMFT</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+                <id>roloreaper</id>
+                <name>Rowland</name>
+                <email>rolo.reaper@gmail.com</email>
+                <url>http://roloreaper.blogspot.com</url>
+                <roles>
+                        <role>developer</role>
+                </roles>
+                <timezone>+2</timezone>
+        </developer>
+
+  </developers>
+</project  
