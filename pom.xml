@@ -97,6 +97,15 @@
                 </roles>
                 <timezone>+2</timezone>
         </developer>
+	<developer>
+	        <id>kevd0ge</id>
+                <name>Kevin</name>
+                <email>kevin.bskev@gmail.com</email>
+                <roles>
+                        <role>developer</role>
+                </roles>
+                <timezone>+2</timezone>
+        </developer>
 
   </developers>
-</project  
+</project
